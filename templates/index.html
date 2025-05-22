@@ -1,0 +1,39 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bird Species Prediction App</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <h1>Bird Species Prediction App</h1>
+      <div class="credit">Made by Sadik Al Jarif</div>
+    </div>
+  </nav>
+  <main>
+    <div class="container">
+      <div class="form-section">
+        <div class="form-group">
+          <form action="/" method="post" enctype="multipart/form-data">
+            <label for="image_upload">Upload Image</label>
+            <div class="file-input">
+              <input type="file" name="image_upload" id="image_upload" accept="image/*" required>
+            </div>
+            <button type="submit">Predict</button>
+          </form>
+          {% if pred %}
+            <div class="prediction">Predicted Species: {{ pred }}</div>
+          {% endif %}
+        </div>
+        <div class="image-section">
+          <img src="{{ url_for('static', filename=full_filename) }}" alt="Uploaded Image">
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
